@@ -39,35 +39,7 @@ ui32[1] = 42;
 ui32[2] = 42;
 ui32[3] = 42;
 var e = bufferShim.from(ui32);
-var _iteratorNormalCompletion = true;
-var _didIteratorError = false;
-var _iteratorError = undefined;
-
-try {
-  for (var _iterator = e.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-    var _step$value = _slicedToArray(_step.value, 2);
-
-    var index = _step$value[0];
-    var value = _step$value[1];
-
-    assert.strictEqual(value, ui32[index]);
-  }
-
-  // First check Buffer#fill() works as expected.
-} catch (err) {
-  _didIteratorError = true;
-  _iteratorError = err;
-} finally {
-  try {
-    if (!_iteratorNormalCompletion && _iterator.return) {
-      _iterator.return();
-    }
-  } finally {
-    if (_didIteratorError) {
-      throw _iteratorError;
-    }
-  }
-}
+assert.strictEqual(e.toString('hex'), '2a2a2a2a');
 
 assert.throws(function () {
   bufferShim.allocUnsafe(8).fill('a', -1);
@@ -1286,15 +1258,13 @@ assert.throws(function () {
   bufferShim.allocUnsafe(10).copy();
 });
 
-var regErrorMsg = new RegExp('First argument must be a string, Buffer, ' + 'ArrayBuffer, Array, or array-like object.');
-
 assert.throws(function () {
   bufferShim.from();
-}, regErrorMsg);
+}, TypeError);
 
 assert.throws(function () {
   bufferShim.from(null);
-}, regErrorMsg);
+}, TypeError);
 
 // Test that ParseArrayIndex handles full uint32
 assert.throws(function () {
