@@ -43,6 +43,9 @@ exports.allocUnsafe = function allocUnsafe(size) {
   if (typeof size !== 'number') {
     throw new TypeError('size must be a number');
   }
+  if (size > MAX_LEN) {
+    throw new RangeError('size is too large');
+  }
   return new Buffer(size);
 }
 exports.from = function from(value, encodingOrOffset, length) {
