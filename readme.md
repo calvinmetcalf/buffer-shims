@@ -13,7 +13,7 @@ bufferShim.allocUnsafeSlow(21);
 
 should just use the original  in newer nodes and on older nodes uses fallbacks.
 
-Known issues
+Known Issues
 ===
 - calling `bufferShim.from(arrayBuf, 1);` will actually create a copy of the arrayBuffer not a view like in node.
 - it's actually a polyfill
