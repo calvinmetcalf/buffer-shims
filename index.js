@@ -3,6 +3,7 @@
 var buffer = require('buffer');
 var Buffer = buffer.Buffer;
 var SlowBuffer = buffer.SlowBuffer;
+var MAX_LEN = buffer.kMaxLength || 2147483647;
 exports.alloc = function alloc(size, fill, encoding) {
   if (typeof Buffer.alloc === 'function') {
     return Buffer.alloc(size, fill, encoding);
@@ -12,6 +13,9 @@ exports.alloc = function alloc(size, fill, encoding) {
   }
   if (typeof size !== 'number') {
     throw new TypeError('size must be a number');
+  }
+  if (size > MAX_LEN) {
+    throw new RangeError('size is too large');
   }
   var enc = encoding;
   var _fill = fill;
@@ -93,6 +97,9 @@ exports.allocUnsafeSlow = function allocUnsafeSlow(size) {
   }
   if (typeof size !== 'number') {
     throw new TypeError('size must be a number');
+  }
+  if (size >= MAX_LEN) {
+    throw new RangeError('size is too large');
   }
   return new SlowBuffer(size);
 }

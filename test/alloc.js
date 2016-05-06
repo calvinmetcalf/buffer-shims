@@ -1080,7 +1080,6 @@ assert.throws(function () {
   bufferShim.allocUnsafeSlow((-1 >>> 0) + 1);
 });
 
-
 // Test Compare
 // {
 //   var _b13 = bufferShim.alloc(1, 'a');
@@ -1148,9 +1147,9 @@ Buffer.poolSize = 0;
 Buffer.poolSize = ps;
 
 // Test Buffer.copy() segfault
-assert.throws(function () {
-  bufferShim.allocUnsafe(10).copy();
-});
+// assert.throws(function () {
+//   bufferShim.allocUnsafe(10).copy();
+// });
 
 assert.throws(function () {
   bufferShim.from();
