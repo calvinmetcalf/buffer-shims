@@ -33,7 +33,11 @@ assert.strictEqual(512, c.length);
 var d = bufferShim.from([]);
 assert.strictEqual(0, d.length);
 
-var ui32 = new Uint32Array(4).fill(42);
+var ui32 = new Uint32Array(4);
+ui32[0] = 42;
+ui32[1] = 42;
+ui32[2] = 42;
+ui32[3] = 42;
 var e = bufferShim.from(ui32);
 var _iteratorNormalCompletion = true;
 var _didIteratorError = false;
