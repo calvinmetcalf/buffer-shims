@@ -15,7 +15,7 @@ should just use the original  in newer nodes and on older nodes uses fallbacks.
 
 Known Issues
 ===
-- calling `bufferShim.from(arrayBuf, 1);` will actually create a copy of the arrayBuffer not a view like in node.
+- this does not patch the buffer object, only the constructor stuff
 - it's actually a polyfill
 
 ![](https://i.imgur.com/zxII3jJ.gif)

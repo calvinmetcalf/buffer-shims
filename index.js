@@ -20,7 +20,7 @@ exports.alloc = function alloc(size, fill, encoding) {
     _fill = 0;
   }
   var buf = new Buffer(size);
-  if (typeof enc === 'string' && typeof _fill === 'string') {
+  if (typeof _fill === 'string') {
     var fillBuf = new Buffer(_fill, enc);
     var flen = fillBuf.length;
     var i = -1;
